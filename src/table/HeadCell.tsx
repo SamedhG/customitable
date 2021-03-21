@@ -25,20 +25,19 @@ const classes = {
 }
 
 export const HeadCell: FunctionComponent<HeadCellProps> = React.memo(function HeadCell({column, onSort}) {
-
-    const { sort: sortable = true } = column;
-
     const arrowUpStyle = useMemo(() => ({...classes.arrow, ...classes.up}), []);
     const arrowDownStyle = useMemo(() => ({...classes.arrow, ...classes.down}), []);
 
+    const { id, sort: sortable = true, header } = column;
+
     let rendered: ReactNode;
     //TODO: figure out how to best default the header name using the id
-    if (typeof column.header === 'undefined') {
-        rendered = <span>{column.id}</span>
-    } else if (typeof column.header === 'string') {
-        rendered = <span>{column.header}</span>;
+    if (typeof header === 'undefined') {
+        rendered = <span>{id}</span>
+    } else if (typeof header === 'string') {
+        rendered = <span>{header}</span>;
     } else {
-        rendered = column.header;
+        rendered = header;
     }
 
     return (
@@ -46,8 +45,8 @@ export const HeadCell: FunctionComponent<HeadCellProps> = React.memo(function He
             <div>
                 {rendered}
                 { sortable && <div>
-                    <button style={arrowUpStyle} onClick={() => onSort(column.id, Order.ASC)}/>
-                    <button style={arrowDownStyle} onClick={() => onSort(column.id, Order.DESC)}/>
+                    <button style={arrowUpStyle} onClick={() => onSort(id, Order.ASC)}/>
+                    <button style={arrowDownStyle} onClick={() => onSort(id, Order.DESC)}/>
                 </div> }
             </div>
         </th>
