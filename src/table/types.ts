@@ -1,6 +1,16 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 
-export type ReactComponent = React.Component | FunctionComponent;
+type CellComponentProps = {
+    id: string,
+    row: object
+}
+
+type HeadCellComponentProps = {
+
+}
+
+export type CellComponent = FunctionComponent<CellComponentProps>;
+export type HeadCellComponent = FunctionComponent<HeadCellComponentProps>
 
 export enum FilterType {
     TEXT,
@@ -10,8 +20,8 @@ export enum FilterType {
 
 export type Column = {
     id: string,
-    header?: string | ReactComponent,
-    component: ReactComponent,
+    header?: string | HeadCellComponent,
+    component: CellComponent,
     filter?: FilterType,
     sort?: boolean
 };

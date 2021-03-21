@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, ReactNode} from 'react';
 import {Column} from './types';
 
 export type HeadCellProps = {
@@ -7,7 +7,7 @@ export type HeadCellProps = {
 
 export const HeadCell: FunctionComponent<HeadCellProps> = React.memo(function HeadCell({column}) {
 
-    let rendered;
+    let rendered: ReactNode;
     //TODO: figure out how to best default the header name using the id
     if (typeof column.header === 'undefined') {
         rendered = <span>{column.id}</span>
