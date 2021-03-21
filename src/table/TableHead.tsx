@@ -11,7 +11,7 @@ export const TableHead: FunctionComponent<TableHeadProps> = React.memo(function 
     return (
         <thead>
             <tr>
-                {columns.map(column => <HeadCell column={column} />)}
+                {columns.map(column => <HeadCell key={column.id} column={column} />)}
             </tr>
         </thead>
     );

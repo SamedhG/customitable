@@ -1,8 +1,10 @@
 import {FunctionComponent} from 'react';
 
+export type RowData = Record<any, any>;
+
 type CellComponentProps = {
     id: string,
-    row: object
+    row: RowData
 }
 
 type HeadCellComponentProps = {
