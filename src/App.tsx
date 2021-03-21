@@ -12,6 +12,7 @@ function App() {
     let columns = [{
         id: "name",
         component: DummyComponent,
+        sort: false
     },
         {
             id: "age",

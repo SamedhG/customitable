@@ -27,3 +27,8 @@ export type Column = {
     filter?: FilterType,
     sort?: boolean
 };
+
+export enum Order {
+    ASC,
+    DESC
+}
